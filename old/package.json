@@ -11,15 +11,9 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.56.1",
-    "@types/react-big-calendar": "^1.16.2",
     "clsx": "^2.1.1",
-    "date-fns": "^4.1.0",
-    "html2canvas": "^1.4.1",
-    "jspdf": "^3.0.2",
     "lucide-react": "^0.344.0",
-    "moment": "^2.30.1",
     "react": "^18.3.1",
-    "react-big-calendar": "^1.19.4",
     "react-dom": "^18.3.1",
     "tailwind-merge": "^3.3.1"
   },
@@ -34,6 +28,7 @@
     "eslint-plugin-react-refresh": "^0.4.11",
     "globals": "^15.9.0",
     "postcss": "^8.4.35",
+    "supabase": "^2.39.2",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.3.0",

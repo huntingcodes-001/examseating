@@ -56,3 +56,70 @@ export interface ExamCommitteeUser {
   created_at: string
   user_profiles?: UserProfile
 }
+
+export interface Exam {
+  id: string
+  name: string
+  start_date: string
+  end_date: string
+  status: 'draft' | 'active' | 'completed'
+  created_by: string
+  created_at: string
+  updated_at: string
+}
+
+export interface ExamSubject {
+  id: string
+  exam_id: string
+  subject_name: string
+  exam_date: string
+  start_time: string
+  end_time: string
+  created_at: string
+}
+
+export interface StudentTimetable {
+  id: string
+  student_id: string
+  exam_subject_id: string
+  is_registered: boolean
+  created_at: string
+  updated_at: string
+  exam_subjects?: ExamSubject
+}
+
+export interface Classroom {
+  id: string
+  name: string
+  capacity: number
+  rows: number
+  columns: number
+  is_active: boolean
+  created_at: string
+}
+
+export interface SeatingArrangement {
+  id: string
+  exam_subject_id: string
+  name: string
+  status: 'draft' | 'submitted' | 'approved' | 'rejected'
+  created_by: string
+  approved_by?: string
+  rejection_reason?: string
+  created_at: string
+  updated_at: string
+  exam_subjects?: ExamSubject
+}
+
+export interface SeatingAssignment {
+  id: string
+  seating_arrangement_id: string
+  student_id: string
+  classroom_id: string
+  row_number: number
+  column_number: number
+  seat_number: string
+  created_at: string
+  students?: Student
+  classrooms?: Classroom
+}

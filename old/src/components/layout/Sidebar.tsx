@@ -9,11 +9,7 @@ import {
   X,
   Shield,
   BookOpen,
-  UserCheck,
-  Calendar,
-  MapPin,
-  FileText,
-  Grid3X3
+  UserCheck
 } from 'lucide-react'
 import { useAuth } from '../../contexts/AuthContext'
 import { cn } from '../../lib/utils'
@@ -28,8 +24,6 @@ interface SidebarProps {
 const adminMenuItems = [
   { id: 'teachers', label: 'Manage Teachers', icon: GraduationCap },
   { id: 'exam-committee', label: 'Exam Committee', icon: Shield },
-  { id: 'exams', label: 'Manage Exams', icon: Calendar },
-  { id: 'seating-review', label: 'Review Seating', icon: MapPin },
   { id: 'all-users', label: 'All Users', icon: Users },
   { id: 'settings', label: 'Settings', icon: Settings },
 ]
@@ -41,54 +35,10 @@ const teacherMenuItems = [
   { id: 'settings', label: 'Settings', icon: Settings },
 ]
 
-const examCommitteeMenuItems = [
-  { id: 'classrooms', label: 'Manage Classrooms', icon: BookOpen },
-  { id: 'generate-seating', label: 'Generate Seating', icon: Grid3X3 },
-  { id: 'seating-arrangements', label: 'Seating Arrangements', icon: MapPin },
-  { id: 'settings', label: 'Settings', icon: Settings },
-]
-
-const studentMenuItems = [
-  { id: 'timetable', label: 'My Timetable', icon: Calendar },
-  { id: 'seating', label: 'My Seating', icon: MapPin },
-  { id: 'download-slip', label: 'Download Slip', icon: FileText },
-  { id: 'settings', label: 'Settings', icon: Settings },
-]
-
 export function Sidebar({ isOpen, onToggle, activeTab, onTabChange }: SidebarProps) {
   const { profile, signOut } = useAuth()
   
-  const getMenuItems = () => {
-    switch (profile?.role) {
-      case 'admin':
-        return adminMenuItems
-      case 'teacher':
-        return teacherMenuItems
-      case 'exam_committee':
-        return examCommitteeMenuItems
-      case 'student':
-        return studentMenuItems
-      default:
-        return []
-    }
-  }
-
-  const menuItems = getMenuItems()
-
-  const getPanelTitle = () => {
-    switch (profile?.role) {
-      case 'admin':
-        return 'Admin Panel'
-      case 'teacher':
-        return 'Teacher Panel'
-      case 'exam_committee':
-        return 'Exam Committee'
-      case 'student':
-        return 'Student Portal'
-      default:
-        return 'Dashboard'
-    }
-  }
+  const menuItems = profile?.role === 'admin' ? adminMenuItems : teacherMenuItems
 
   return (
     <>
@@ -107,7 +57,7 @@ export function Sidebar({ isOpen, onToggle, activeTab, onTabChange }: SidebarPro
       )}>
         <div className="flex items-center justify-between p-4 border-b border-gray-200">
           <h1 className="text-xl font-bold text-gray-900">
-            {getPanelTitle()}
+            {profile?.role === 'admin' ? 'Admin Panel' : 'Teacher Panel'}
           </h1>
           <button
             onClick={onToggle}

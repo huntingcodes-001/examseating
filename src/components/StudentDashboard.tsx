@@ -1,28 +1,22 @@
 import React, { useState } from 'react'
 import { Header } from './layout/Header'
 import { Sidebar } from './layout/Sidebar'
-import { ManageTeachers } from './admin/ManageTeachers'
-import { ManageExamCommittee } from './admin/ManageExamCommittee'
-import { AllUsers } from './admin/AllUsers'
-import { ManageExams } from './admin/ManageExams'
-import { SeatingReview } from './admin/SeatingReview'
+import { StudentTimetable } from './student/StudentTimetable'
+import { StudentSeating } from './student/StudentSeating'
+import { DownloadSlip } from './student/DownloadSlip'
 
-export function AdminDashboard() {
+export function StudentDashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  const [activeTab, setActiveTab] = useState('teachers')
+  const [activeTab, setActiveTab] = useState('timetable')
 
   const renderContent = () => {
     switch (activeTab) {
-      case 'teachers':
-        return <ManageTeachers />
-      case 'exam-committee':
-        return <ManageExamCommittee />
-      case 'exams':
-        return <ManageExams />
-      case 'seating-review':
-        return <SeatingReview />
-      case 'all-users':
-        return <AllUsers />
+      case 'timetable':
+        return <StudentTimetable />
+      case 'seating':
+        return <StudentSeating />
+      case 'download-slip':
+        return <DownloadSlip />
       case 'settings':
         return (
           <div className="flex items-center justify-center h-64">
@@ -30,7 +24,7 @@ export function AdminDashboard() {
           </div>
         )
       default:
-        return <ManageTeachers />
+        return <StudentTimetable />
     }
   }
 

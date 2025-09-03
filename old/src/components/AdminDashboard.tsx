@@ -4,8 +4,6 @@ import { Sidebar } from './layout/Sidebar'
 import { ManageTeachers } from './admin/ManageTeachers'
 import { ManageExamCommittee } from './admin/ManageExamCommittee'
 import { AllUsers } from './admin/AllUsers'
-import { ManageExams } from './admin/ManageExams'
-import { SeatingReview } from './admin/SeatingReview'
 
 export function AdminDashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -17,10 +15,6 @@ export function AdminDashboard() {
         return <ManageTeachers />
       case 'exam-committee':
         return <ManageExamCommittee />
-      case 'exams':
-        return <ManageExams />
-      case 'seating-review':
-        return <SeatingReview />
       case 'all-users':
         return <AllUsers />
       case 'settings':

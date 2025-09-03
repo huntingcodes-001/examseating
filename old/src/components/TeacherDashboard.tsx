@@ -1,28 +1,21 @@
 import React, { useState } from 'react'
 import { Header } from './layout/Header'
 import { Sidebar } from './layout/Sidebar'
-import { ManageTeachers } from './admin/ManageTeachers'
-import { ManageExamCommittee } from './admin/ManageExamCommittee'
-import { AllUsers } from './admin/AllUsers'
-import { ManageExams } from './admin/ManageExams'
-import { SeatingReview } from './admin/SeatingReview'
+import { ManageStudents } from './teacher/ManageStudents'
+import { StudentApprovals } from './teacher/StudentApprovals'
 
-export function AdminDashboard() {
+export function TeacherDashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  const [activeTab, setActiveTab] = useState('teachers')
+  const [activeTab, setActiveTab] = useState('students')
 
   const renderContent = () => {
     switch (activeTab) {
-      case 'teachers':
-        return <ManageTeachers />
-      case 'exam-committee':
-        return <ManageExamCommittee />
-      case 'exams':
-        return <ManageExams />
-      case 'seating-review':
-        return <SeatingReview />
-      case 'all-users':
-        return <AllUsers />
+      case 'students':
+        return <ManageStudents />
+      case 'add-student':
+        return <ManageStudents />
+      case 'approvals':
+        return <StudentApprovals />
       case 'settings':
         return (
           <div className="flex items-center justify-center h-64">
@@ -30,7 +23,7 @@ export function AdminDashboard() {
           </div>
         )
       default:
-        return <ManageTeachers />
+        return <ManageStudents />
     }
   }
 
